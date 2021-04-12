@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
+    <link rel="stylesheet" href="./calendarioSrc/calendario.css">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
+</head>
+
+<body>
+    <div class="title-parent">
+        <h1>Calendário</h1>
+        <div class="divLogout">
+            <a href="./index.html"><button class="logoutBtn">Logout</button></a>
+        </div>
+    </div>
+    <div class="todo-grid-parent">
+        <div>
+            <div class="todo-input todo-block">
+                <span>Tarefa: </span>
+                <input type="text" placeholder="Coloque o evento">
+                <span>Categoria: </span>
+                <input type="text" placeholder="Coloque a categoria" list="categoryList">
+                <datalist id="categoryList">
+                    <option value="Pessoal"></option>
+                    <option value="Trabalho"></option>
+                    <option value="Evento"></option>
+                </datalist>
+                <span>Data: </span>
+                <input type="date" id="dateInput">
+                <span>Inicio: </span>
+                <input type="time" id="timeInput">
+                <span>Fim: </span>
+                <input type="time" id="timeFinalInput">
+                <span></span>
+                <button id="addBtn" >Adicionar</button>
+                <span></span>
+                <button id="sortBtn" >Organizar por data</button>
+                <span></span>
+                <label class="containerCheckbox"><input type="checkbox" id="shortlistBtn">Incompleto Primeiro <span class="checkmark"></span></label>
+            </div>
+            <table id="todoTable" class="todo-block">
+                <tr>
+                    <td><img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0yNTYgMGMtMTQxLjE2NDA2MiAwLTI1NiAxMTQuODM1OTM4LTI1NiAyNTZzMTE0LjgzNTkzOCAyNTYgMjU2IDI1NiAyNTYtMTE0LjgzNTkzOCAyNTYtMjU2LTExNC44MzU5MzgtMjU2LTI1Ni0yNTZ6bTAgMCIgZmlsbD0iIzIxOTZmMyIvPjxwYXRoIGQ9Im0zODUuNzUgMjAxLjc1LTEzOC42Njc5NjkgMTM4LjY2NDA2MmMtNC4xNjAxNTYgNC4xNjAxNTctOS42MjEwOTMgNi4yNTM5MDctMTUuMDgyMDMxIDYuMjUzOTA3cy0xMC45MjE4NzUtMi4wOTM3NS0xNS4wODIwMzEtNi4yNTM5MDdsLTY5LjMzMjAzMS02OS4zMzIwMzFjLTguMzQzNzUtOC4zMzk4NDMtOC4zNDM3NS0yMS44MjQyMTkgMC0zMC4xNjQwNjIgOC4zMzk4NDMtOC4zNDM3NSAyMS44MjAzMTItOC4zNDM3NSAzMC4xNjQwNjIgMGw1NC4yNSA1NC4yNSAxMjMuNTg1OTM4LTEyMy41ODIwMzFjOC4zMzk4NDMtOC4zNDM3NSAyMS44MjAzMTItOC4zNDM3NSAzMC4xNjQwNjIgMCA4LjMzOTg0NCA4LjMzOTg0MyA4LjMzOTg0NCAyMS44MjAzMTIgMCAzMC4xNjQwNjJ6bTAgMCIgZmlsbD0iI2ZhZmFmYSIvPjwvc3ZnPg==" class="checkboxImage"/></td>
+                    <td>Dia</td>
+                    <td>Inicio</td>
+                    <td>Fim</td>
+                    <td>Eventos</td>
+                    <td>
+                        <select id="categoryFilter">
+                            <option value="Todos Eventos">Todos Eventos</option>
+                        </select>
+                    </td>
+                    <td>Editar</td>
+                    <td>Deletar</td>
+                </tr>
+            </table>
+        </div>
+        <div class="todo-calendar">
+            <div id="calendar" class="todo-block"></div>
+        </div>
+    </div>
+
+    <div class="todo-overlay " id="todo-overlay">
+        <div class="todo-modal" id="todo-modal">
+            <div class="todo-input todo-block">
+                <span>Evento: </span>
+                <input type="text" placeholder="Coloque o evento" id="todo-edit-todo">
+                <span>Categoria: </span>
+                <input type="text" placeholder="Coloque a categoria" list="categoryList" id="todo-edit-category">
+                <datalist id="categoryList">
+                    <option value="Pessoal"></option>
+                    <option value="Trabalho"></option>
+                    <option value="Evento"></option>
+                </datalist>
+                <span>Data: </span>
+                <input type="date" id="todo-edit-date">
+                <span>Inicio: </span>
+                <input type="time" id="todo-edit-time">
+                <span>Fim: </span>
+                <input type="time" id="todo-edit-final-time">
+                <span></span>
+                <button id="changeBtn" >Salvar</button>
+            </div>
+        </div>
+        <div class="todo-modal-close-btn" id="todo-modal-close-btn">X</div>
+    </div>
+
+
+    <script src="./calendarioSrc/calendario.js"></script>
+</body>
+
+</html>
